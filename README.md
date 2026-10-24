@@ -166,7 +166,7 @@ The offsets are for the builds tested (2.31: file version 3.0.80.51928; 2.5: 3.0
 
 ## Building from source
 
-Requirements: Visual Studio 2022 or later with the **Desktop development with C++** workload.
+Requirements: Visual Studio 2022 or later (Community, Professional, Enterprise or Build Tools) with the **Desktop development with C++** workload. The build scripts find it automatically through `vsenv.bat`.
 
 ```bat
 build.bat
@@ -174,13 +174,23 @@ build.bat
 
 This produces `build\NoModdedSaveTag.asi`. It's a single source file with no dependencies beyond the Windows SDK. It's built with `/MT`, so players don't need the Visual C++ runtime installed.
 
-`test\harness.exe <path to Cyberpunk2077.exe>` runs version detection and pattern matching against an exe on disk without patching anything. Use it to check whether the patterns still match a new game build.
+**Test tools** (each built by the matching script in `test\`):
+
+| Build script | Tool | What it does |
+|---|---|---|
+| `test\build_test.bat` | `test\harness.exe <path to Cyberpunk2077.exe>` | Runs version detection and pattern matching against an exe on disk without patching anything. Use it to check whether the patterns still match a new game build. |
+| `test\build_hardening.bat` | `test\hardening.exe <path to Cyberpunk2077.exe>` | Loads the exe into its own process and tests patching, the already-patched check, rollback when memory can't be made writable, and the crash guard. |
+| `test\build_loadasi.bat` | `test\loadasi.exe <path to .asi>` | A minimal host that loads the plugin, for testing the host check and logging. Rename a copy to `Cyberpunk2077.exe` to pass the host check. |
 
 ## Credits
 
 Made by **strifehart**: [Nexus Mods profile](https://www.nexusmods.com/profile/strifehart) · [GitHub](https://github.com/strifehart/2077-no-modded-save-tag)
 
 Uses [Ultimate ASI Loader](https://github.com/ThirteenAG/Ultimate-ASI-Loader) by ThirteenAG, distributed with [Cyber Engine Tweaks](https://github.com/maximegmd/CyberEngineTweaks).
+
+The flag was tracked down with [Ghidra](https://github.com/NationalSecurityAgency/ghidra), the NSA's free reverse-engineering suite. The irony of using spy agency software to keep CDPR from snitching on your saves is very much appreciated.
+
+Thanks to **Claude** (Anthropic) for the hard grind: digging through the game exe with Ghidra, tracking down where the modded flag gets set (and the sneaky one hiding in the save file), and helping turn it all into this plugin.
 
 ## Licence
 
