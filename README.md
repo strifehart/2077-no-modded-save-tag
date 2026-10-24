@@ -54,6 +54,7 @@ Result: every new save is written with `isModded = false` **and** `ModdingSystem
 |---|---|---|---|
 | 2.31 | ✅ | 3 | ✅ Saves come out clean, and a re-save on vanilla 2.5 stays clean |
 | 2.5 | ✅ | 6 | ✅ A tagged save re-saved with the plugin comes out clean, and shows clean on PS5 |
+| PS5 (via Cross Progression) | — | — | ✅ Clean saves show no modded icons and still unlock trophies |
 | Newer than 2.5 | ⚠️ Tries the 2.5 patches and logs a warning | — | ❌ |
 | Anything else | ❌ Nothing is patched | — | — |
 
@@ -61,7 +62,7 @@ Result: every new save is written with `isModded = false` **and** `ModdingSystem
 
 - **Existing saves stay tagged.** The plugin only affects saves written while it's running. Load an old save and save again to get a clean copy.
 - **Game updates.** A new patch will most likely move the code. The plugin then finds no match, logs why and patches nothing. It won't break the game, but it needs updated patterns to work again.
-- **Console: icons confirmed, trophies not yet.** On PS5, a tagged save shows the modded and broken-trophy icons. The same save re-saved with the plugin shows neither. Whether trophies actually unlock from it hasn't been verified yet.
+- **Console: confirmed on PS5.** A tagged save shows the modded and broken-trophy icons; the same save re-saved with the plugin shows neither. A character played modded on PC (2.31), saved clean with the plugin and transferred via Cross Progression went on to unlock a Phantom Liberty trophy (*Arachnophobia*) on PS5. Xbox hasn't been tested.
 - **mod.io:** the mod.io patches haven't been tested with mod.io mods actually enabled.
 
 ## Requirements
