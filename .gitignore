@@ -1,0 +1,18 @@
+# Build output
+build/
+dist/
+*.asi
+*.obj
+*.exe
+*.exp
+*.lib
+*.pdb
+*.ilk
+
+# Runtime and test logs
+*.log
+*.tmp
+
+# Visual Studio
+.vs/
+*.user
